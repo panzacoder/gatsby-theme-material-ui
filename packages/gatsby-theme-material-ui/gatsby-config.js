@@ -12,12 +12,19 @@ const defaultWebFontsConfig = {
 };
 
 module.exports = (themeOptions) => {
-  const { muiPluginConfig = {}, webFontsConfig = defaultWebFontsConfig } =
-    themeOptions;
+  const {
+    muiPluginConfig = {},
+    webFontsConfig = defaultWebFontsConfig,
+  } = themeOptions;
 
   return {
     plugins: [
-      `gatsby-theme-material-ui-top-layout`,
+      {
+        resolve: `gatsby-theme-material-ui-top-layout`,
+        options: {
+          ...muiPluginConfig,
+        },
+      },
       {
         resolve: `gatsby-plugin-material-ui`,
         options: {
